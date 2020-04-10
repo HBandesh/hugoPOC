@@ -1,0 +1,14 @@
+{{ $meta :=  first 3 .Params }}
+{{ $images :=  after 3 .Params }}
+{{ $t := .Page.URL }}
+<div class="text-with-images">
+    <h1>{{index $meta 0}}</h1>
+    <p>{{index $meta 1}}</p>
+    {{range $i,$e := $images }}
+        {{ if eq $i 0 }}
+            <a href="{{index $meta 2}}"><img src="/img/{{$e}}" alt="{{$e}}"></img></a>
+        {{ else }}
+            <img src="/img/{{$e}}" alt="{{$e}}"></img>
+        {{ end }}
+    {{end}}
+</div>
